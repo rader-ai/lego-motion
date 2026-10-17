@@ -4,7 +4,7 @@ Owners: the **Creative Director** holds these house rules across productions; th
 
 ## 1. The language in one paragraph
 
-Every idea becomes a small world you could actually build: real parts in real colors on the stud grid, a short palette, one clear silhouette, studs showing, a story you can read in one second, and a little wear from being handled and played with. It's photographed like a toy on a table and moves like a toy in a hand. Ideas don't get decorated with bricks; they get rethought in bricks, the way a good builder would.
+Every idea becomes a small world you could actually build. It uses real parts in real colors, a short palette, one clear silhouette and visible studs, with a story you can read in one second and a little wear from being played with. It looks like a toy photographed on a table and moves like a toy in a hand. Design each idea in bricks from the start, the way a good builder would, rather than covering a finished idea in bricks.
 
 ## 2. Brickification: the method
 
@@ -23,7 +23,11 @@ Every board, scene and film starts here. The Art Director runs it; the output is
 | 9 | **Physics.** Clutch, support, no impossible joins. | Build Validator passes. |
 | 10 | **Read test.** One-second glance, then thumbnail, then "what is this about" from someone (or a model) that hasn't seen the brief. | If it fails, simplify. Never fix a failed read by adding. |
 
-The one-second read and the black-fill silhouette are our own proposals; no source defines them for bricks (research/08 gaps). In code: render a 256 px thumbnail, show it to a vision model for one turn with "name what this is in five words", and compare to the brief. Also run the black-fill version. Both results go in `read_test.json`.
+The one-second read and the black-fill silhouette are our own proposals; no source defines them for bricks (research/08 gaps). How the read test runs (`brick read-test`):
+- At Build Brief, the Art Director lists 1 to 3 **must-name nouns** with synonyms in `build_bible.yaml` (for a coffee shop: "coffee shop, cafe, coffee bar"). Chris approves them with the brief, so the subject can't be swapped for an easier one later.
+- A 256 px thumbnail of the **hero render with no board text** goes to a **non-Claude** vision model (the makers are Claude, and judges favor their own family, clay research/04) with one prompt: name what this is in five words.
+- Pass when code finds a must-name noun or synonym in the answer. The black-fill silhouette version runs too and is logged.
+- Calibrated in Phase 5 on known-bad boards (muddy silhouettes, wrong subjects) so the gate catches real misreads. Results go in `read_test.json`.
 
 ## 3. Scale
 
@@ -51,7 +55,7 @@ The one-second read and the black-fill silhouette are our own proposals; no sour
 
 **Which hex values.** LDraw history has two conventions that disagree a lot (red as #B40000 vs #C91A09, blue as #1E5AA8 vs #0055BF; research/03 section 2). Phase 0 pins the current LDConfig; the Look Development Supervisor picks the convention that matches real bricks under our view transform by photographing real bricks next to a color chart (GOLD_SET.md) and records the choice in `LOOK_DEV.md`.
 
-**Starter families** (LDraw codes, research/03 section 2): neutrals 15 White, 71 Light Bluish Grey, 72 Dark Bluish Grey, 0 Black; earths 19 Tan, 28 Dark Tan, 70 Reddish Brown, 308 Dark Brown; primaries 4 Red, 1 Blue, 14 Yellow, 25 Orange, 2 Green; muted 330 Olive Green, 378 Sand Green, 379 Sand Blue, 320 Dark Red, 272 Dark Blue, 288 Dark Green; lights 226 Bright Light Yellow, 212 Bright Light Blue, 191 Bright Light Orange; brights 27 Lime, 322 Medium Azure, 5 Dark Pink, 353 Coral; transparent 47 Clear, 36 Red, 46 Yellow, 43 Light Blue, 57 Orange, 40 Smoke. Skin tones in figure prints use the eight real skin colors or the classic yellow; the production decides once.
+**Starter families** (LDraw codes, research/03 section 2): neutrals 15 White, 71 Light Bluish Grey, 72 Dark Bluish Grey, 0 Black; earths 19 Tan, 28 Dark Tan, 70 Reddish Brown, 308 Dark Brown; primaries 4 Red, 1 Blue, 14 Yellow, 25 Orange, 2 Green; muted 330 Olive Green, 378 Sand Green, 379 Sand Blue, 320 Dark Red, 272 Dark Blue, 288 Dark Green; lights 226 Bright Light Yellow, 212 Bright Light Blue, 191 Bright Light Orange; brights 27 Lime, 322 Medium Azure, 5 Dark Pink, 353 Coral; transparent 47 Clear, 36 Red, 46 Yellow, 43 Light Blue, 57 Orange, 40 Smoke. Skin tone is the color of the head and hand parts, not part of the print. Use the classic yellow or the real skin-tone colors that exist for those parts; research/03 section 2 found no LDraw codes for three of the eight common skin colors (Umber Brown, Sienna Brown, Medium Tan), so Phase 1 finds them. The production decides once.
 
 ## 5. Parts and building
 
@@ -112,12 +116,13 @@ One object per idea, color by role, and at most one short caption on the board. 
 
 ## 9. The build bible (one per production)
 
-`bible/build_bible.md`, written by the Art Director, locked at Design Lock (films) or Build Brief (boards):
-- One-line idea and the one-second read.
+`build_bible.yaml`, written by the Art Director, locked at Build Brief (boards) or Design Lock (films). It's data, because the validator and the read test read it (L2, L8, `brick read-test`); `build_brief.md` is rendered from it for Chris. Every board job has one; a film has one in `bible/`. Fields:
+- One-line idea, the one-second read, and the 1 to 3 must-name nouns with synonyms.
 - Look: set or film (section 6), and the thread choices that apply.
 - Scale, with studs per metre and the figure height.
 - Palette: the closed list of LDraw color codes with roles (dominant, secondary, accent, neutrals, backdrop).
 - Part vocabulary: seed part, modules, hero parts, parts that are never allowed.
+- Budgets: piece count, unique parts, exotic parts, prints.
 - Story beats and the gag.
 - Prints needed (faces, torsos, tiles), all original.
 - Fan-rules check (FAN_RULES.md), signed by the Creative Director.

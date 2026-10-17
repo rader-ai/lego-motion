@@ -16,10 +16,10 @@ A toy can only move the way a hand could move it. Parts never bend, stretch or s
 3. Fast action: sources disagree (threes and fours for roughness vs ones for clarity, research/01 section 3). Default twos; the Supervising Animator may tag a segment ones or threes, and motion QC treats an untagged change as a fail.
 4. Camera moves on ones (as in clay).
 5. Holds in multiples of two; 12 or more frames for an expression to register. Avoid 3 to 5 frame holds, which read as a mistake [U].
-6. **No motion blur, ever.** Fast moves get brick blur: a short strip or cluster of bricks in the character's colors trailing the move for one or two exposures (research/01 section 3).
+6. **No motion blur, ever.** Fast moves get brick blur: a short strip or cluster of bricks in the character's colors trailing the move for one or two exposures (research/01 section 3; the length is our guess [U]).
 
 **The rigid figure** (research/02 section 3)
-7. Joints: head turns, arms swing at the shoulder, hands twist at the wrist, legs swing at the hip. No elbows, no knees, no bending torso. Exact limits come from Chris's figures (GOLD_SET.md), stored in `rig/joint_limits.json`.
+7. Joints: head turns, the body turns at the waist where the hip part allows it, arms swing at the shoulder, hands twist at the wrist, legs swing at the hip. No elbows, no knees, no bending torso. Exact limits come from Chris's figures (GOLD_SET.md), stored in `rig/joint_limits.json`.
 8. Anticipation without squash: move a little the opposite way first (lean back before reaching down, arm back before a throw), 2 to 4 frames.
 9. Ease by step size: small step, grow to the middle, small last step. The clay starting curve (about 1 : 3 : 4 : 3 : 1) is a first guess [U].
 10. Feeling lives in head tilt, lean, arm pose and the face print. Small head moves for shock; big moves for anger or joy.
@@ -48,7 +48,7 @@ A toy can only move the way a hand could move it. Parts never bend, stretch or s
 
 | Clay engine part | Brick version |
 |---|---|
-| Puppet rig, about 25 bones, IK legs, stretch property | **Figure rig from parts.** Bones only at real pivots, read from part metadata by the Brick Librarian's catalog: head yaw, shoulder pitch per arm, wrist roll per hand, hip pitch per leg, plus root. FK only. No stretch property. |
+| Puppet rig, about 25 bones, IK legs, stretch property | **Figure rig from parts.** Bones only at real pivots, read from the Brick Librarian's catalog: head yaw, waist yaw, shoulder pitch per arm, wrist roll per hand, hip pitch per leg, plus root. FK only. No stretch property. |
 | Replacement slots: mouth, brows, lids, eyes | **Slots:** `mouth`, `eyes`, `brows` (decal layers), plus `arm_l`, `arm_r`, `torso`, `head`, `hand_item` for part swaps |
 | Mouth set from a parametric lip model | Printed mouth set from the Print and Decal Artist, mapped from Rhubarb's A to H plus X to the 6 to 8 printed shapes |
 | Contact solver: feet raycast to floor | **Stud solver:** planted feet snap to the nearest stud position on the surface below and lock; steps land on whole studs; hands snap to bars and clips when gripping |
@@ -79,6 +79,7 @@ The studio's signature move candidate (CREATIVE_DIRECTION.md thread 4) and the b
 - Each part arrives along its insertion direction over 2 to 3 exposures and seats with a one-plate settle, or pops into place in one exposure for the "set look". A click event per part goes to sound.
 - Sub-assemblies arrive whole, the way a builder would add them.
 - Disassembly runs the same steps in reverse.
+- **Ships early.** Builds-itself and a simple turntable need only stepped keys on whole parts, not the figure rig or timing engine, so both are built in the board lane (KICKOFF Phase 4) as motion cards. Figure acting, faces and Brick FX wait for the motion lane.
 
 ## 6. Motion QC changes
 
@@ -90,12 +91,12 @@ Clay's motion QC table applies, with these changes. Computed from Blender data, 
 | **Joint limits** | Fail | Outside `joint_limits.json` | Impossible poses |
 | **Rotations only at pivots** | Fail | A part moving relative to its parent other than about its pivot | Fake elbows and knees |
 | **Feet on studs** | Fail | Planted foot off a stud position by more than 1 LDU | Sliding, floating feet |
-| **Part interpenetration** | Fail | Overlap beyond the stud-in-tube allowance | Arms through bodies, hands through wheels |
+| **Part interpenetration** | Fail | Overlap beyond a connection's allowance (`posed` validator profile, BUILD.md section 4) | Arms through bodies, hands through wheels |
 | **Brick count stable** | Fail | Model part count or layout changes between frames unless a swap or attach is logged | Identity drift, popping |
-| **FX legality** | Fail | Any FX part not a real part in a real color, or any non-brick volume or particle | Smooth CG fire and water |
+| **FX legality** | Fail | `fx` validator profile: any FX part not a real part in a real color, or any non-brick volume or particle | Smooth CG fire and water |
 | **Motion blur** | Fail | Motion blur enabled anywhere | Interpolated look |
 | Held-frame change, cadence, foot skate, mouth timing | As in clay | As in clay | As in clay |
-| Squash and stretch checks | Removed | n/a | Not allowed at all |
+| Squash and stretch checks, near-straight spine, line of action | Removed | n/a | Rigid figures have no spine to bend; squash is not allowed at all |
 
 ## 7. Build order (Animation TD), after Board Bar
 

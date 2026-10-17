@@ -4,7 +4,9 @@ Owners: the **Look Development Supervisor** owns materials, wear and the screen 
 
 ## 1. The look in one paragraph
 
-Every frame should read as a macro photograph of real plastic bricks on a table: true-size studs and bevels catching soft light, hairline dark gaps between bricks, bricks a hair off square because hands built them, light glowing through thin white and yellow walls, transparent parts that pipe light to their edges, a few fingerprints and scratches only where hands would have been, depth of field that comes from a real lens at real distance, and colors that look like the bricks in a kid's bin, not like screen RGB.
+Every frame should read as a macro photograph of real plastic bricks on a table. True-size studs and bevels catch soft light, hairline dark gaps separate the bricks, and each brick sits a hair off square because hands built it. Light glows through thin white and yellow walls and pipes to the edges of transparent parts. Fingerprints and scratches show up only where hands would have been. Depth of field comes from a real lens at a real distance, and colors match the bricks in a kid's bin rather than screen RGB.
+
+Imported materials from any LDraw importer are replaced by the house shaders below; the importer settings are pinned in ENGINEERING.md section 3.
 
 ## 2. Materials (Blender 5.x Principled BSDF; introspect socket names on the pinned build)
 
@@ -21,11 +23,11 @@ Every frame should read as a macro photograph of real plastic bricks on a table:
 ## 3. Geometry at true scale
 
 - Work in true metres. Stud pitch 8 mm, brick 9.6 mm, plate 3.2 mm, stud about 4.85 mm wide and 1.6 to 1.7 mm tall, walls 1.6 mm (research/05 section 2).
-- **Gaps are real geometry:** 0.15 mm plus or minus 0.05 between neighbors (each side relieved 0.1 mm). At 4K a 0.2 mm gap is about 4 px at 1:5 and 2 px at 1:10, so it can't be faked with a texture. Gaps read near-black, never pure black. Pixel filter 1.5 to 2.0 px.
+- **Gaps are real geometry:** 0.15 mm plus or minus 0.05 between neighbors (each side relieved 0.1 mm). At 4K a 0.2 mm gap is about 4 px at 1:5 and 2 px at 1:10, so it can't be faked with a texture. Gaps read near-black, never pure black. Pixel filter 1.8 to 2.0 px (this also covers moire on stud grids, section 8).
 - **Bevels** [U]: outer edges 0.12 to 0.20 mm, stud rim 0.15 to 0.25 mm, stud base fillet 0.10 mm, 2 segments, plus or minus 30% per part. True size at every shot scale; enlarged bevels look like marshmallows.
 - **Molding**: slight draft (0.3 to 0.5 degrees) and low-frequency warp in the normals (0.2 to 0.5 degrees at 10 to 20 mm) so highlights wobble slightly. Gate and ejector marks as per-part attributes on hero parts [U].
 - **Assembly jitter** (the features found perfectly snapped models looked wrong; research/01 section 4). Starting values [U]: offset plus or minus 0.03 to 0.05 mm, yaw plus or minus 0.15 degrees, tilt 0.1 to 0.3 degrees, 20% of bricks unseated 0.05 to 0.15 mm, at most 3% unseated 0.3 to 0.6 mm. Sub-assemblies move together. Tilt of a degree or more reads broken. Seeded from part ID plus position so a rebuilt model looks the same.
-- **Stud mark**: never the toy maker's logo (FAN_RULES.md). Blank studs read wrong at 1:3 or closer, where a stud is 170 px or more. So studs carry **our own house glyph**, about 3.5 mm wide and raised 0.05 to 0.10 mm, designed with the house mark; blank is acceptable at 1:5 and wider.
+- **Stud mark**: never the toy maker's logo (FAN_RULES.md). Blank studs read wrong at 1:3 or closer, where a stud is 170 px or more. So studs carry **our own house glyph**, about 3.5 mm wide and raised 0.05 to 0.10 mm [U], designed with the house mark under the mark brief in FAN_RULES.md section 2 (a shape, no letters); blank is acceptable at 1:5 and wider.
 
 ## 4. Wear and imperfection
 
@@ -39,15 +41,15 @@ A stack of layers per brick, each seeded per brick so nothing tiles (research/05
 7. Dust, lint, at most one hair per hero frame; dust bunches in corners.
 8. Model level: oxidation and yellowing on old whites and transparent clear.
 
-| Budget | Set look | Film look |
+| Budget | Set look [U, our proposal] | Film look (research/05 section 3, also [U]) |
 |---|---|---|
-| Fingerprints | 1 in 10 hero bricks, faint | 1 in 5 hero bricks, never on every stud |
+| Fingerprints | 1 in 10 hero bricks, faint | at most 1 in 5 hero bricks, never on every stud |
 | Scratch streaks | under 5% of hero surface | under 15% |
 | Dust | crevices only, barely | crevices and dark colors |
 | Unseated bricks | 10% slight, none large | as in section 3 |
-| Yellowing, cracks | none | allowed, on purpose |
+| Yellowing, cracks | none | allowed, on purpose [U] |
 
-Any pattern repeating on three or more bricks is a tell. Each layer must be removable in an A/B without the frame turning CG-clean.
+Any pattern repeating on three or more bricks is a tell. No single wear layer should carry the look: turning any one off should still leave a frame that looks real.
 
 ## 5. Camera and lens (DP)
 
@@ -86,14 +88,14 @@ Any pattern repeating on three or more bricks is a tell. Each layer must be remo
 
 ## 8. Post and render tiers
 
-**Post (VFX Supervisor):** per-pose sensor noise (same seed within a hold), diffraction softening, delivery downscale, 0.5 to 2% veiling glare from backlit transparent and emissive parts, mild vignette, sub-pixel chromatic aberration, glare only from true over-range sources. Skip halation unless a production asks for a film-stock look. Every effect should be visible only when toggled off.
+**Post (VFX Supervisor):** per-pose sensor noise (same seed within a hold), diffraction softening, delivery downscale, 0.5 to 2% veiling glare from backlit transparent and emissive parts, mild vignette, sub-pixel chromatic aberration, glare only from true over-range sources. Skip halation unless a production asks for a film-stock look. Keep each post effect subtle enough that you notice it only when it's gone.
 
-**Never:** tilt-shift gradients, heavy bloom on white bricks, uniform grain, big chromatic aberration, lens-dirt overlays, sharpening halos, denoiser-smoothed prints, moire on stud grids (pixel filter 1.8 to 2.2), motion blur.
+**Never:** tilt-shift gradients, heavy bloom on white bricks, uniform grain, big chromatic aberration, lens-dirt overlays, sharpening halos or fake phone processing (a code check measures halos and noise, GOLD_SET.md section 1), denoiser-smoothed prints, moire on stud grids, motion blur.
 
 | Tier | Engine | Use |
 |---|---|---|
-| Thumbnail | Workbench or EEVEE | Read tests, layout, silhouettes |
-| Instructions | EEVEE flat shading with line art outlines | Instruction sheets, parts callouts |
+| Thumbnail | Workbench if it runs headless on the render machine (Phase 0), else low-sample Cycles | Read tests, layout, silhouettes |
+| Instructions | Flat shading with line art outlines: EEVEE on a GPU, else Workbench or low-sample Cycles | Instruction sheets, parts callouts |
 | Preview | Cycles, low samples, denoised | Pop-throughs, board drafts |
 | Final | Cycles, full samples, albedo and normal fed to the denoiser | Board finals, film finals |
 

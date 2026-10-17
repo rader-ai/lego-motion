@@ -1,6 +1,6 @@
 # Creative direction from the Executive Producer
 
-This file holds Chris's creative direction for Brick Studio. The Creative Director turns it into house rules in `studio/STYLE_BIBLE.md`; every production turns it into a build bible (`DESIGN_LANGUAGE.md` section 6).
+This file holds Chris's creative direction for Brick Studio. The Creative Director turns it into house rules in `studio/STYLE_BIBLE.md`; every production turns it into a build bible (`DESIGN_LANGUAGE.md` section 9).
 
 ## Direction, Oct 17, 2026
 
@@ -22,8 +22,8 @@ This file holds Chris's creative direction for Brick Studio. The Creative Direct
 ## What that means in practice (draft for the Creative Director)
 
 - **Real parts only.** Every visible object is built from parts that exist in the LDraw library, in colors that part actually comes in, placed on the stud grid. If it can't be built, it doesn't go on screen.
-- **Toy physics, toy motion.** Parts never bend. Figures move only at their joints. Motion steps like stop motion. Effects are pieces being swapped.
-- **Photographed, not rendered.** Macro lens, true toy-scale depth of field, light that wraps around small plastic, and the wear real bricks pick up from hands and floors.
+- **Toy physics, toy motion.** Parts stay rigid, figures move only at their joints, and poses step like stop motion. Effects come from swapping pieces.
+- **Looks like a macro photo.** A macro lens, true toy-scale depth of field, light that wraps around small plastic, and the wear real bricks pick up from hands and floors.
 - **Readable in one second.** Each idea is translated into bricks with a chosen scale, a short palette and one clear silhouette before anything gets built (research/08).
 - **Original stories and characters.** Fan mode allows real parts, but every character, world and story is ours. No film characters, no licensed themes, no lookalikes.
 
@@ -32,8 +32,8 @@ This file holds Chris's creative direction for Brick Studio. The Creative Direct
 The clay studio is tied together by four layers (earth pigments, the maker's hand, one place, one fiber). Brick Studio needs its own. Candidates, which can stack:
 
 1. **Everything is bricks.** No non-brick element anywhere: skies, water, fire, light beams and dust are all parts. The house rule from the films.
-2. **Built on the floor.** Worlds look like someone actually built them at home: a few odd colors in hidden spots, mixed themes, a real builder's choices, a world that could be knocked over. Warmth over polish.
-3. **Straight from the box.** Every world could be a real set: closed palette, a play feature, box-art lighting, and the instructions exist. Polish over warmth.
+2. **Built on the floor.** Worlds look like someone actually built them at home: a few odd colors in hidden spots, mixed themes, a real builder's choices, a world that could be knocked over. This trades polish for warmth.
+3. **Straight from the box.** Every world could be a real set: closed palette, a play feature, box-art lighting, and the instructions exist. This trades warmth for polish.
 4. **It builds itself.** A signature move in every film and board: something assembles piece by piece on screen, the way the instructions would build it.
 
 Options 2 and 3 pull in opposite directions; pick one of them, or set one per production.
