@@ -6,9 +6,9 @@ Owner: the **Pipeline TD**. The clay studio's `ENGINEERING.md` applies (plugin m
 
 | Repo | Visibility | Holds |
 |---|---|---|
-| `rader-ai/brick-motion` | Public | The plugin, studio docs, research, NOTICE. No renders, no gold photos, no A/B results. |
+| `rader-ai/lego-motion` | Public | The plugin, studio docs, research, NOTICE. No renders, no gold photos, no A/B results. |
 | `rader-ai/clay-motion` | Public | The shared operating model; cloned next to this repo |
-| `rader-ai/brick-motion-rnd` (name at Phase 0) | Private | R&D ledger, tune log, A/B results, gold provenance, held-out briefs and photo twins, hidden judge config |
+| `rader-ai/brick-studio-rnd` (name at Phase 0) | Private | R&D ledger, tune log, A/B results, gold provenance, held-out briefs and photo twins, hidden judge config |
 | `rader-ai/brick-boards` (name at Phase 0) | Private | One folder per board job (CLAUDE_MAPPING.md) |
 | One repo per film | Private | As in clay |
 
@@ -27,7 +27,7 @@ Phase 0 checks `../clay-motion`. If the clay studio has built any of these, Bric
 
 **Plugin layout**
 ```
-brick-motion/
+lego-motion/
   .claude-plugin/plugin.json   name: brick-studio
   agents/                      one file per role (STUDIO_DELTA.md, plus shared roles)
   skills/                      studio-charter, board, make, brickify, ... (CLAUDE_MAPPING.md)

@@ -14,7 +14,7 @@ Chris chose **personal and fun only** (Oct 17, 2026). That puts the studio in fa
 
 | Rule | Why |
 |---|---|
-| Never use the toy maker's brand name in a repo, plugin, skill, file, folder, film title, channel or board title. Use "brick-built" or "brick". | Its fan policy bars the name in addresses and treats it as an adjective-only word mark (research/07 section 4). |
+| Never use the toy maker's brand name in a plugin, skill, file, folder, film title, channel or board title. Use "brick-built" or "brick". One exception: Chris named the kit repo `lego-motion` (Oct 17, 2026), knowing the policy. New repos and everything inside them follow the rule. | Its fan policy bars the name in addresses and treats it as an adjective-only word mark (research/07 section 4). |
 | Never show the toy maker's logo: not on boards, boxes, signs, props or studs. | The logo may never appear on unofficial material. |
 | **Studs never carry the toy maker's logo.** Turn off logo studs in the LDraw importer and check every render. Studs carry our own house glyph in close-ups, or stay blank on wide shots (LOOK_DEV.md section 3). | The logo on studs is protected; plain studs are generic (research/07 section 1). Blank studs look wrong up close (research/05 section 2). |
 | Use a house mark of our own on Set boards and box-style layouts. | Box art without the logo needs something in that spot. Chris approves the mark. |

@@ -11,7 +11,7 @@ This file holds Chris's creative direction for Brick Studio. The Creative Direct
 | Decision | Choice | What it means |
 |---|---|---|
 | Use | Personal and fun only | Fan mode: real brick parts from the LDraw library, including standard figure parts, under the toy maker's fan rules. No commercial use, no client work, no ads. See `FAN_RULES.md`. |
-| Home | Own repo, shared org | `rader-ai/brick-motion` reuses the clay studio's operating model (bible, tracker, gates, critic panel) by reference. Only the deltas live here. Either studio can be built first. |
+| Home | Own repo, shared org | `rader-ai/lego-motion` reuses the clay studio's operating model (bible, tracker, gates, critic panel) by reference. Only the deltas live here. Either studio can be built first. |
 | First | Art boards first | Any idea becomes a brick-built art board in hours. Motion and films build on the same models later, so nothing made for a board is thrown away. |
 
 ## The two references, in one line each
