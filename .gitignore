@@ -1,0 +1,5 @@
+renders/
+*.exr
+.env
+.venv/
+__pycache__/
